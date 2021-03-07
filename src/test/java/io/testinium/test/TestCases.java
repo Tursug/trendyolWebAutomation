@@ -1,6 +1,8 @@
 package io.testinium.test;
 
 import org.junit.Test;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 
 import io.testinium.constant.HomePageConstants;
 import io.testinium.constant.ProductPageConstants;
@@ -12,11 +14,12 @@ import io.testinium.pages.ProductPage;
 import io.testinium.pages.SearchPage;
 import io.testinium.test.base.BaseTest;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCases extends BaseTest{
 	
 	/*Select Male Photo*/
     @Test
-    public void selectMale(){
+    public void a_selectMale(){
     	HomePage homePage = new HomePage(webDriver);
     	homePage.waitElement(HomePageConstants.MALE_IMAGE);
     	homePage.selectMale();
@@ -24,7 +27,7 @@ public class TestCases extends BaseTest{
     
     /*Search WebCam*/
     @Test
-    public void searchWebCam() {
+    public void b_searchWebCam() {
     	SearchPage searchPage = new SearchPage(webDriver);
     	searchPage.waitElement(SearchPageConstants.SEARCH_BOX);
     	searchPage.searchWebCam();
@@ -32,7 +35,7 @@ public class TestCases extends BaseTest{
     
     /*Select Cheapest Logitech*/
     @Test
-    public void selectCheapestLogitech(){
+    public void c_selectCheapestLogitech(){
     	ProductPage productPage = new ProductPage(webDriver);
     	productPage.waitElement(ProductPageConstants.LOGITECH_CHECKBOX);
     	productPage.selectLogitech();
@@ -45,7 +48,7 @@ public class TestCases extends BaseTest{
     
     /*Get Comment and Rating Number of Cheapest Logitech*/
     @Test
-    public void getRatingsComments() throws InterruptedException {
+    public void d_getRatingsComments() throws InterruptedException {
     	
     	LogitechPage logitechPage = new LogitechPage(webDriver);
     	logitechPage.switchToNewTab();
@@ -53,7 +56,12 @@ public class TestCases extends BaseTest{
     	logitechPage.getRatingNumber();	
     	logitechPage.switchToPreviousTab();
     	
-    	/*Select A4Tech, re-select logitech, click cheapest, add to basket*/
+    }
+    
+    /*Get Comment and Rating Number of Cheapest Logitech*/
+    @Test
+    public void e_selectCheapestAFourTech() {
+    	
     	ProductPage productPage = new ProductPage(webDriver);
     	productPage.waitElement(ProductPageConstants.AFOUR_CHECKBOX);
     	productPage.selectAFourTech();
@@ -61,10 +69,13 @@ public class TestCases extends BaseTest{
     	productPage.deSelectLogitech();
     	productPage.waitElement(ProductPageConstants.CHEAPEST_ITEM);
     	productPage.clickCheapest();
-    	
+    }
+    
+    /*Add to Cart*/
+    @Test
+    public void f_AFourTechaddToBasket() {
     	AFourPage afourPage = new AFourPage(webDriver);
     	afourPage.addToBasket();
-    	
     }
     
     
