@@ -15,7 +15,7 @@ public class BasePage {
 	/*Constructor*/
     public BasePage(WebDriver driver) {
         webDriver = driver;
-        wait = new WebDriverWait(webDriver, 1000);
+        wait = new WebDriverWait(webDriver, 10);
     }
     
     /*Print Title*/
@@ -25,7 +25,6 @@ public class BasePage {
     
     /*Wait Element*/
     public void waitElement(By by) {
-    	WebDriverWait wait = new WebDriverWait(webDriver, 10);
     	wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
    
